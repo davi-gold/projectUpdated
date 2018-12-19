@@ -7,6 +7,7 @@ using namespace std;
 
 
 int main() {
+    // THIS IS A TEST
     string str = "rudder = (h0 – heading)/20";
     map<string, Command> symbolTable;
     Translator *t = new Translator(symbolTable);
