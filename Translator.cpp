@@ -55,6 +55,20 @@ list<string> Translator::lexer(string str) {
     return strLst;
 }
 
+/**
+ * This function pad the text with spaces for convenient splitting
+ * @param pointer to string
+ * @return string
+ */
+void paddingSpaces(string &str){
+    int i = 0; // index
+    string* strTmp = &str;
+    // as long as this is not the end of the string
+    while (str[i] != ENDOFSTRING) {
+
+    }
+}
+
 
 //
 //void Translator::parser(list<string> strLst) {
