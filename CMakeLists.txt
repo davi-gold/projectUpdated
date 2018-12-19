@@ -3,4 +3,4 @@ project(projectUpdated)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(projectUpdated main.cpp Translator.cpp Translator.h Command.h UnaryExp.h BinaryExp.h Addition.h ConditionCommand.h Division.h Multiply.h MyExpression.h Substruction.h Num.h)
+add_executable(projectUpdated main.cpp Translator.cpp Translator.h Command.h UnaryExp.h BinaryExp.h Addition.h ConditionCommand.h Division.h Multiply.h MathExpression.h Substruction.h Num.h)

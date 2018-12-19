@@ -4,8 +4,8 @@
 
 #ifndef AP1EX3_UNARYEXP_H
 #define AP1EX3_UNARYEXP_H
-#include "MyExpression.h"
-class UnaryExp : public MyExpression{
+#include "MathExpression.h"
+class UnaryExp : public MathExpression{
 
 public:
     virtual double calculate() =0;
