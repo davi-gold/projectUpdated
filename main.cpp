@@ -30,7 +30,7 @@ int main() {
                  "}\n"
                  "print \"done\"";
 
-    string symbolTable;
+    map<string, Command> symbolTable;
     Translator *t = new Translator(symbolTable);
     list<string> s;
     s = t->lexer(str);
