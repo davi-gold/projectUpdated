@@ -21,8 +21,6 @@ public:
     Translator(map<string, Command> symbolTable);
     void parser(list<string> strLst);
     list<string> lexer(string str);
-    string paddingSpaces(string str);
-    string concatNxtOperators(string str);
 };
 
 #endif //PROJECT_TRANSLATOR_H
