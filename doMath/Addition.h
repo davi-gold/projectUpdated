@@ -5,9 +5,9 @@
 #ifndef AP1EX3_PLUS_H
 #define AP1EX3_PLUS_H
 
-#include "BinaryExp.h"
+#include "../BinaryExp.h"
 class Addition : BinaryExp {
-    double calculate() {
+    double calculate() override {
         return (left->calculate()) + right->calculate();
     }
 };

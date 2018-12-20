@@ -4,10 +4,13 @@
 
 #ifndef AP1EX3_SUBTRACTION_H
 #define AP1EX3_SUBTRACTION_H
-#include "BinaryExp.h"
+
+#include "../BinaryExp.h"
+
 class Subtraction : BinaryExp {
-    double calculate() {
+    double calculate() override {
         return (left->calculate) - right->calculate;
     }
 };
+
 #endif //AP1EX3_SUBTRACTION_H

@@ -4,10 +4,20 @@
 
 #ifndef AP1EX3_CONDITIONCOMMAND_H
 #define AP1EX3_CONDITIONCOMMAND_H
-#include "Command.h"
-class: ConditionCommand: public Command{
-public:
-virtual void execute()=0;
 
+#include "doCommand.h"
+#include "MathExpression.h"
+#include <string>
+
+
+class ConditionCommand : public doCommand {
+protected:
+    bool *condition;
+    doCommand *orders;
+public:
+    ConditionCommand(MathExpression *cond, doCommand *toDo) : condition(cond), orders(toDo) {}
+
+    virtual bool execute() = 0;
 };
+
 #endif //AP1EX3_CONDITIONCOMMAND_H
