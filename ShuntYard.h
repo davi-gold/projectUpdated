@@ -6,19 +6,24 @@
 #define PROJECTUPDATED_SHUNTYARD_H
 
 #include <string>
-#include <list>
+#include <stack>
+#include <map>
 using namespace std;
 
 class ShuntYard {
     //members
-    list<string> operatorList;
-    list<string> outputList;
+    stack<string> operatorList;
+    stack<string> outputList;
 public:
     //constructor
-    ShuntYard(list<string> lexerOutput);
+    ShuntYard(string mathEquation);
 
     //destructor
     virtual ~ShuntYard();
+
+    const stack<string> &getOperatorList() const;
+
+    const stack<string> &getOutputList() const;
 };
 
 
