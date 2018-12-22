@@ -22,7 +22,7 @@ int main() {
                  "throttle = 1\n"
                  "var h0 = heading\n"
                  "while alt < 1000 {\n"
-                 "rudder = (h0 - heading/20)\n"
+                 "rudder = (h0 - heading)/20\n"
                  "aileron = - roll / 70\n"
                  "elevator = pitch / 50\n"
                  "print alt\n"

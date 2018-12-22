@@ -5,17 +5,17 @@
 #ifndef AP1EX3_CONDITIONCOMMAND_H
 #define AP1EX3_CONDITIONCOMMAND_H
 
-#include "doCommand.h"
+#include "DoCommand.h"
 #include "MathExpression.h"
 #include <string>
 
 
-class ConditionCommand : public doCommand {
+class ConditionCommand : public DoCommand {
 protected:
     bool *condition;
-    doCommand *orders;
+    DoCommand *orders;
 public:
-    ConditionCommand(MathExpression *cond, doCommand *toDo) : condition(cond), orders(toDo) {}
+    ConditionCommand(MathExpression *cond, DoCommand *toDo) : condition(cond), orders(toDo) {}
 
     virtual bool execute() = 0;
 };

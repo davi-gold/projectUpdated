@@ -8,7 +8,7 @@
 #include <string>
 class Command {
 public:
-  virtual std::string execute() =0;
+  virtual int execute() =0;
 };
 
 #endif //AP1EX3_COMMAND_H

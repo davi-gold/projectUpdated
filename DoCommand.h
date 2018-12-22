@@ -6,9 +6,9 @@
 #define PROJECTUPDATED_DOCOMMAND_H
 
 #include "Command.h"
-class doCommand: public  Command{
+class DoCommand: public  Command{
 public:
-    virtual std::string execute()=0;
+    virtual int execute()=0;
 };
 
 #endif //PROJECTUPDATED_DOCOMMAND_H

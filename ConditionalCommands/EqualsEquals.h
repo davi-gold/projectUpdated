@@ -6,7 +6,7 @@
 #define PROJECTUPDATED_EQUALSEQUALS_H
 
 #include "../ConditionCommand.h"
-class: EqualsEquals :doCommand
+class: EqualsEquals :DoCommand
 
 
 #endif //PROJECTUPDATED_EQUALSEQUALS_H
