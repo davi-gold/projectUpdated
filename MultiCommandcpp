@@ -1,0 +1,37 @@
+//
+// Created by schwe on 23/12/2018.
+//
+
+#include "MultiCommand.h"
+#include <list>
+
+public:
+/**
+ * addCommand:
+ * This function adds a new command to the 'toDo' list
+ * @param doCommand;
+ * @return
+ */
+void addCommand(doCommand newCommand) {
+    commandsToDo.push_back(newCommand);
+};
+
+/**
+ * removeCommand:
+ * This function removes a command from the 'toDo' list
+ * @param toRemove
+ * @return
+ */
+void removeCommand(doCommand toRemove) {
+    commandsToDo.remove(toRemove);
+
+};
+/**
+ * execute:
+ * This function iterates the 'toDo' list and executes each command.
+ * @param
+ * @return
+ */
+void std::execute() {
+    std::for_each(commandsToDo.begin(), commandsToDo.end(), execute());
+}
