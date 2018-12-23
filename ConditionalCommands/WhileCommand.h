@@ -5,11 +5,12 @@
 #ifndef PROJECTUPDATED_WHILECOMMAND_H
 #define PROJECTUPDATED_WHILECOMMAND_H
 #include "../ConditionCommand.h"
-#include "MultiCommand.h"
+#include "../MultiCommand.h"
 
 class WhileCommand : ConditionCommand {
 protected:
-MultiCommand toDo;
+    ConditionCommand *cond;
+    MultiCommand *toDo;
 
     std::string execute() override {
         while ((condition->execute())) {

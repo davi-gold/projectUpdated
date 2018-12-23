@@ -5,30 +5,50 @@
 #ifndef AP1EX3_CONDITIONCOMMAND_H
 #define AP1EX3_CONDITIONCOMMAND_H
 
-#include "doCommand.h"
+#include "Command.h"
 #include "MathExpression.h"
 #include <string>
-
-using namespace std;
-class ConditionCommand : public doCommand {
+/**
+ * ConditionCommand::
+ * This function receives two Expressions, and a Condition between them, it checks
+ * if the given condition 'exists' (i.e is true of false) between the 2 given Expressions
+ * @param MathExpression left,right; Command ConditionOperator
+ * @return
+ */
+class ConditionCommand : Command {
 protected:
-    bool *condition;
-    doCommand *orders;
+    MathExpression *left;
+    MathExpression *right;
+    bool condition;
 public:
-    //constructor
-    ConditionCommand(MathExpression *cond, doCommand *toDo) : condition(cond), orders(toDo) {}
+    ConditionCommand(MathExpression *left, MathExpression *right, Command *ConditionOperator){};
+     int execute(){};
+
+    //getter
+    bool isCondition() const {
+        return condition;
+    }
 
     //setter
-    void setCondition(bool *condition) {
+    void setCondition(bool condition) {
         ConditionCommand::condition = condition;
     }
 
     //getter
-    bool *getCondition() const {
-        return condition;
+    MathExpression *getLeft() const {
+        return left;
     }
-
-    virtual string execute() = 0;
+//setter
+    void setLeft(MathExpression *left) {
+        ConditionCommand::left = left;
+    }
+//getter
+    MathExpression *getRight() const {
+        return right;
+    }
+//setter
+    void setRight(MathExpression *right) {
+        ConditionCommand::right = right;
+    }
 };
-
 #endif //AP1EX3_CONDITIONCOMMAND_H

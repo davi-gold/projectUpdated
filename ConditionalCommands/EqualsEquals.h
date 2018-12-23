@@ -6,12 +6,19 @@
 #define PROJECTUPDATED_EQUALSEQUALS_H
 
 #include "../ConditionCommand.h"
-class: EqualsEquals :ConditionCommand{
+class EqualsEquals :ConditionCommand{
 
-    std::string execute() override {
-            return (orders->execute);
-        }
+public:
+virtual int execute(){
+    if(getLeft()->calculate()==getRight()->calculate())
+    {
+        setCondition(true);
+    }else{
+        setCondition(false);
     }
+    return 3;
+};
+
 
 };
 #endif //PROJECTUPDATED_EQUALSEQUALS_H

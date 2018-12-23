@@ -5,28 +5,56 @@
 #ifndef PROJECTUPDATED_MULTICOMMANC_H
 #define PROJECTUPDATED_MULTICOMMANC_H
 
-#include "doCommand.h"
+#include "Command.h"
 #include <list>
 
-class MultiCommand {
+/**
+ * MultiCommand:
+ * This function receives (or adds to/removes from) a list of several Commands
+ * upon 'execute' it will execute the entire list of given commands
+ * @param list<Command> *toDo
+ * @return
+ */
+class MultiCommand : Command {
 protected:
-std::list<doCommand> commandsToDo;
+    std::list<Command> *commandsToDo;
 public:
     //constructor
-    MultiCommand(const std::list<doCommand> &commandsToDo) : commandsToDo(commandsToDo) {}
+    MultiCommand(std::list<Command> &commandsToDo) : commandsToDo(commandsToDo) {}
+
+    //constructor
+    MultiCommand() {
+        this->commandsToDo = new std::list<Command>;
+    }
 
     //getter
-    const std::list<doCommand> &getCommandsToDo() const {
+    std::list<Command> *getCommandsToDo() {
         return commandsToDo;
     }
 
     //setter
-    void setCommandsToDo(const std::list<doCommand> &commandsToDo) {
+    void setCommandsToDo(std::list<Command> &commandsToDo) {
         MultiCommand::commandsToDo = commandsToDo;
     }
 
-    void addCommand(){};
-    void removeCommand(){};
+    /**
+ * execute:
+ * Function iterates over entire list and 'executes' each Command
+ * @param
+ * @return
+ */
+    int execute() {
+        for (Command index=commandsToDo->begin();index!=commandsToDo->end();++index){
+                Command commandBuffer= *index;
+                commandBuffer.execute();
+        }
+            //as always we return the AMOUNT of arguements we have just executed
+            return commandsToDo->size();
+    }
+
+    void addCommand() {};
+
+    void removeCommand() {};
 
 };
 

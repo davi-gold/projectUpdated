@@ -32,6 +32,3 @@ void removeCommand(doCommand toRemove) {
  * @param
  * @return
  */
-void std::execute() {
-    std::for_each(commandsToDo.begin(), commandsToDo.end(), execute());
-}
