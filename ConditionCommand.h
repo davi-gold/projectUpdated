@@ -5,19 +5,30 @@
 #ifndef AP1EX3_CONDITIONCOMMAND_H
 #define AP1EX3_CONDITIONCOMMAND_H
 
-#include "DoCommand.h"
+#include "doCommand.h"
 #include "MathExpression.h"
 #include <string>
 
-
-class ConditionCommand : public DoCommand {
+using namespace std;
+class ConditionCommand : public doCommand {
 protected:
     bool *condition;
-    DoCommand *orders;
+    doCommand *orders;
 public:
-    ConditionCommand(MathExpression *cond, DoCommand *toDo) : condition(cond), orders(toDo) {}
+    //constructor
+    ConditionCommand(MathExpression *cond, doCommand *toDo) : condition(cond), orders(toDo) {}
 
-    virtual bool execute() = 0;
+    //setter
+    void setCondition(bool *condition) {
+        ConditionCommand::condition = condition;
+    }
+
+    //getter
+    bool *getCondition() const {
+        return condition;
+    }
+
+    virtual string execute() = 0;
 };
 
 #endif //AP1EX3_CONDITIONCOMMAND_H

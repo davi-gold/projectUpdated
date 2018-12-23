@@ -6,7 +6,12 @@
 #define PROJECTUPDATED_EQUALSEQUALS_H
 
 #include "../ConditionCommand.h"
-class: EqualsEquals :DoCommand
+class: EqualsEquals :ConditionCommand{
 
+    std::string execute() override {
+            return (orders->execute);
+        }
+    }
 
+};
 #endif //PROJECTUPDATED_EQUALSEQUALS_H
