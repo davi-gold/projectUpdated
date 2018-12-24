@@ -45,16 +45,34 @@ public:
  */
     int execute() {
         for (Command index=commandsToDo->begin();index!=commandsToDo->end();++index){
-                Command commandBuffer= *index;
+                Command *commandBuffer= *index;
                 commandBuffer.execute();
         }
             //as always we return the AMOUNT of arguements we have just executed
             return commandsToDo->size();
     }
 
-    void addCommand() {};
+public:
+/**
+ * addCommand:
+ * This function adds a new command to the 'toDo' list
+ * @param doCommand;
+ * @return
+ */
+    void addCommand(Command newCommand) {
+        commandsToDo.push_back(newCommand);
+    };
 
-    void removeCommand() {};
+/**
+ * removeCommand:
+ * This function removes a command from the 'toDo' list
+ * @param toRemove
+ * @return
+ */
+    void removeCommand(Command toRemove) {
+        commandsToDo.remove(toRemove);
+    };
+
 
 };
 

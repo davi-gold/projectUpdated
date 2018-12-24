@@ -13,7 +13,7 @@ class commandExpression : public MathExpression {
     Command command;
 public:
     double calculate(){
-        command.execute();
+        command->execute();
     }
 };
 

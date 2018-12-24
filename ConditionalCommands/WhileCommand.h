@@ -12,9 +12,9 @@ protected:
     ConditionCommand *cond;
     MultiCommand *toDo;
 
-    std::string execute() override {
-        while ((condition->execute())) {
-
+    int execute() override {
+        while ((cond->execute())) {
+            toDo->execute();
         }
     }
 
