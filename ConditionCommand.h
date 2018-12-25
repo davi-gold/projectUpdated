@@ -21,7 +21,10 @@ protected:
     MathExpression *right;
     bool condition;
 public:
-    ConditionCommand(MathExpression *left, MathExpression *right, Command *ConditionOperator){};
+    ConditionCommand(bool condition) : condition(condition) {};
+
+    ConditionCommand(MathExpression *left, MathExpression *right) : left(left), right(right) {};
+
      int execute(){};
 
     //getter

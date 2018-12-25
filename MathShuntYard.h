@@ -10,16 +10,16 @@
 #include <map>
 using namespace std;
 
-class ShuntYard {
+class MathShuntYard {
     //members
     stack<string> operatorList;
     stack<string> outputList;
 public:
     //constructor
-    ShuntYard(string mathEquation);
+    MathShuntYard(string mathEquation);
 
     //destructor
-    virtual ~ShuntYard();
+    virtual ~MathShuntYard();
 
     const stack<string> &getOperatorList() const;
 

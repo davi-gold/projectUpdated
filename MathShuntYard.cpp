@@ -2,7 +2,7 @@
 // Created by schwe on 20/12/2018.
 //
 
-#include "ShuntYard.h"
+#include "MathShuntYard.h"
 #include <string>
 #include <sstream>
 
@@ -15,7 +15,7 @@ using namespace std;
 * @param string
 * @return void
 */
-ShuntYard::ShuntYard(string equation) {
+MathShuntYard::MathShuntYard(string equation) {
     //generate new members
     stack<string> operatorList;
     stack<string> outputList;
@@ -80,7 +80,7 @@ ShuntYard::ShuntYard(string equation) {
                 if (equation[i] == ')') {
                     if (!operatorList.empty()) {
                         string temp = operatorList.top();
-                        operatorList.pop;
+                        this->operatorList.pop;
                         //until we find a '(' we pop our operators into our output stack
                         while (temp != "(" && (!operatorList.empty())) {
                             outputList.push(temp);
@@ -100,17 +100,17 @@ ShuntYard::ShuntYard(string equation) {
 /*
  *returns the stack of operators
  */
-const stack<string> &ShuntYard::getOperatorList() const {
+const stack<string> &MathShuntYard::getOperatorList() const {
     return operatorList;
 }
 
 /*
  *returns the stack of variables
  */
-const stack<string> &ShuntYard::getOutputList() const {
+const stack<string> &MathShuntYard::getOutputList() const {
     return outputList;
 };
 
 
 //destructor
-ShuntYard::~ShuntYard() = default;
+MathShuntYard::~MathShuntYard() = default;

@@ -1,0 +1,14 @@
+//
+// Created by schwe on 26/12/2018.
+//
+
+#ifndef PROJECTUPDATED_EXPRESSIONFACTORY_H
+#define PROJECTUPDATED_EXPRESSIONFACTORY_H
+
+
+class ExpressionFactory {
+
+};
+
+
+#endif //PROJECTUPDATED_EXPRESSIONFACTORY_H

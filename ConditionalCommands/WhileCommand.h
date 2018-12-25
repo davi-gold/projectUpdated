@@ -12,7 +12,7 @@ protected:
     ConditionCommand *cond;
     MultiCommand *toDo;
 
-    int execute() override {
+    int execute(){
         while ((cond->execute())) {
             toDo->execute();
         }
