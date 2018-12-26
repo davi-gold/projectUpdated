@@ -21,9 +21,9 @@ public:
     //destructor
     virtual ~MathShuntYard();
 
-    const stack<string> &getOperatorList() ;
+    const stack<string> getOperatorList() ;
 
-    const stack<string> &getOutputList() ;
+    const stack<string> getOutputList() ;
 };
 
 

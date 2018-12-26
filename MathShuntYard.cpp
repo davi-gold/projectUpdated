@@ -80,7 +80,7 @@ MathShuntYard::MathShuntYard(string equation) {
                 if (equation[i] == ')') {
                     if (!operatorList.empty()) {
                         string temp = operatorList.top();
-                        operatorList.pop;
+                        operatorList.pop();
                         //until we find a '(' we pop our operators into our output stack
                         while (temp != "(" && (!operatorList.empty())) {
                             outputList.push(temp);
@@ -100,14 +100,14 @@ MathShuntYard::MathShuntYard(string equation) {
 /*
  *returns the stack of operators
  */
-const stack<string> &MathShuntYard::getOperatorList() const {
+const stack<string> MathShuntYard::getOperatorList() {
     return operatorList;
 }
 
 /*
  *returns the stack of variables
  */
-const stack<string> &MathShuntYard::getOutputList() const {
+const stack<string> MathShuntYard::getOutputList() {
     return outputList;
 };
 

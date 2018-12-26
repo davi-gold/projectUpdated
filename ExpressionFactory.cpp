@@ -1,103 +1,155 @@
 //
 // Created by schwe on 26/12/2018.
 //
-#include "ExpressionFactory.h"
+#include "ConditionCommand.h"
+#include "ConditionalCommands/IfCommand.h"
+#include "ConditionalCommands/WhileCommand.h"
+#include "Data.h"
+#include "Expression.h"
+#include "CommandExpression.h"
+#include "Command.h"
+#include "MathShuntYard.h"
+#include "MultiCommand.h"
+#include "doMath/AllMath.h"
+#include "Translator.h"
+#include <string>
+#include <list>
+#include <stack>
+#include <map>
+#include <vector>
+#include "Data.h"
+#include "DefineVar.h"
 
-
-typedef std::pair<std::string, std::string> stringpair_t;
-const stringpair_t start_values[] = {
-        stringpair_t("Cat", "Feline"),
-        stringpair_t("Dog", "Canine"),
-        stringpair_t("Fish", "Fish")
-};
 using namespace std;
 
-class: ExpressionFactory {
+class ExpressionFactory {
 
 public:
-    ///**
+    CommandExpression created;
+    Data *data = data->getInstance;
+
+    //constructor
+    ExpressionFactory(list<string> input) {
+        created = ExpressionSortFactory(input);
+    };
+
+
 /**
  * This function sorts the strings into stacks (ShuntingYard)
  * @param list<string> input
  * @return
  */
-
-    void ExpressionSortingYard(list<string> input) {
+    CommandExpression ExpressionSortFactory(list<string> input) {
         //we read the first string of our list
-        list<string>::iterator
-                index = input.begin();
-
-
-        list<string>::iterator
-                end = input.end();
+        list<string>::iterator index = input.begin();
         string buffer = *index;
-        stack<string> outputStack;
-        stack<string> operatorStack;
-
 //we iterate over the entire list
-        while (index != input.end()) {
+        while (*index != ";") {
 
+            string buffer = *index;
 
-            //we check for operators
-            if (buffer == "=" || buffer == "var" || buffer == "bind" || "while" || buffer == "{" || "}") {
-                //if we received 'weak' operators we confirm
-                if (buffer == "var" || buffer == "bind") {
-                    //we check if we need to remove any Higher Operators
-                    while (operatorStack.top() == "=") {
-                        outputStack.push(operatorStack.top());
-                        operatorStack.pop();
+            //if we find a 'loop' command
+            if (buffer == "while" || buffer == "if") {
+                //we advance into the condition
+                advance(index, 1);
+
+                list<string> CondList;
+                while (*index != "{") {
+                    CondList.push_back(*index);
+                }
+                //we create the condition
+                ConditionCommand newCondition = new ConditionCommand(ExpressionFactory(CondList));
+
+                //we create a list of the loop commands (and condition)
+                list<string> loopList;
+                while (*index != "}") {
+                    loopList.push_back(*index);
+                }
+                //we now send our list to a function that will create a MultiCommand
+                MultiCommand multi = LoopFactory(loopList));
+                //we now create either an "if" or a "while" command
+                if (buffer == "if") {
+                    IfCommand ourCommand = new IfCommand(newCondition, multi);
+                    return ourCommand;
+                } else {
+                    if (buffer == "while") {
+                        WhileCommand ourCommand = new WhileCommand(newCondition, multi);
+                        return ourCommand;
                     }
-                    operatorStack.push(buffer);
                 }
 
-                //if we found an "=" sign
 
-                //if we found a "while", or "if"
-//find "{" and "}"-make a new list, then we recursively call "Expression Factory" (or just a "Stack Factory?") for the new list-
+            } else {
+
+                //if we found a "var" operator
+                if (buffer == "var") {
+                    advance(index, 1);
+                    //we save the name for our new Variable
+                    string tempName = *index;
+                    //we advance past the "=" sign
+                    advance(index, 2);
+                    if (*index == "bind") {
+                        advance(index, 1);
+                        CommandExpression ourCommand = new DefineVar(tempName, *index);
+                        return ourCommand;
+                        //if we ARENT binding the new variable we need to generate a final value
+                    } else {
+                        list<string> newList;
+                        advance(index, 1);
+                        while (*index != ";") {
+                            newList.push_back(*index);
+                            advance(index, 1);
+                        }
+                        CommandExpression ourCommand = new DefineVar(tempName, ExpressionFactory(newList));
+                        return ourCommand;
+                    }
+
+                }
+                //otherwise we must have found a variable
+            }else{
+                //if it is a Math variable it will contain operators and/or numbers
+                if (buffer) {
 
 
-                //if we found a ";"
-                //we execute what we've found and advance to the next command
+                }
+                    //if it is a previously defined variable
+                else {
 
-                //if we found "openServer"
-                //new OpenDataServer
-
-                //if we found "connect"
-
-                //new Connect
-
+                }
             }
-                //if we havent found "=,var,bind,while,{,}
-            else {
 
 
-            }
-            //if we have a variable (of any type)
-            else {
-                outputStack.push(*index);
-            }
 
-
-            //now we advance on to the next string
-            advance(index, 1);
-
-
+            //now we return the expression
+            return ourCommand;
         }
 
 
     };
 
 
-    ///**
-/**
- * This function receives 2 stacks and returns the constructed Expressions
- * @param file
- * @return list of expression
- */
+    MultiCommand LoopFactory(list<string> input2) {
 
-    CommandExpression : ExpressionFactorySorted(stack<string> outputs, stack<string> operators){
+        list<string>::iterator lIndex = input2.begin();
+        //we advance past the "{" and into the commands
+        advance(lIndex, 2);
+        //we create a list of the commands to add
+        list<CommandExpression> listOfCommands;
+        while (*lIndex != "}") {
+            list<string> tempList;
+            while (*lIndex != ";") {
+                tempList.push_back(*lIndex);
+                advance(lIndex, 1);
 
+                listOfCommands.push_back(new CommandExpression(ExpressionFactory(tempList)))
+                advance(index, 1);
+            }
+        }
+        //we now have the condition AND the list of commands
+        MultiCommand ourCommand = new MultiCommand(listOfCommands);
+        return ourCommand;
 
-    };
+    }
+
 
 };

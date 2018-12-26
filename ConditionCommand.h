@@ -5,7 +5,7 @@
 #ifndef AP1EX3_CONDITIONCOMMAND_H
 #define AP1EX3_CONDITIONCOMMAND_H
 
-#include "Command.h"
+#include "CommandExpression.h"
 #include "Expression.h"
 #include <string>
 /**
@@ -25,7 +25,7 @@ public:
 
     ConditionCommand(Expression *left, Expression *right) : left(left), right(right) {};
 
-     int execute(){};
+     int execute();
 
     //getter
     bool isCondition() const {

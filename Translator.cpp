@@ -9,7 +9,7 @@ using namespace std;
 #include <map>
 #include <list>
 #include <fstream>
-#include "Command.h"
+//#include "Command.h"
 #include "Translator.h"
 
 #define ENDOFSTRING '\0'

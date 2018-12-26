@@ -19,24 +19,24 @@ using namespace std;
 
 class MultiCommand : Command {
 protected:
-    std::list<Command> commandsToDo;
+    std::list<CommandExpression> commandsToDo;
 public:
     //constructor
-    MultiCommand(std::list<Command> &commandsToDo) : commandsToDo(commandsToDo) {}
+    MultiCommand(std::list<CommandExpression> commandsToDo) : commandsToDo(commandsToDo) {}
 
     //constructor
     MultiCommand() {
-         std::list<Command> commandList;
-        this->commandsToDo=commandList;
+        list <CommandExpression> commandsList;
+        commandsToDo = commandsList;
     }
 
     //getter
-    std::list<Command> getCommandsToDo() {
+    std::list<CommandExpression> getCommandsToDo() {
         return commandsToDo;
     }
 
     //setter
-    void setCommandsToDo(std::list<Command> commandsToDo) {
+    void setCommandsToDo(std::list<CommandExpression> commandsToDo) {
         MultiCommand::commandsToDo = commandsToDo;
     }
 
@@ -47,7 +47,8 @@ public:
  * @return
  */
     int execute() {
-        for (list<Command, std::allocator<Command>>::iterator index = commandsToDo.begin(); index != commandsToDo.end(); ++index) {
+        for (list<Command, std::allocator<Command>>::iterator index = commandsToDo.begin();
+             index != commandsToDo.end(); ++index) {
             index->execute();
         }
         //as always we return the AMOUNT of arguements we have just executed
@@ -60,8 +61,8 @@ public:
  * @param doCommand;
  * @return
  */
-    void addCommand(Command newCommand) {
-        commandsToDo.push_back(newCommand);
+    void addCommand(Command *newCommand) {
+        commandsToDo.push_back(*newCommand);
     };
 
 /**
@@ -70,8 +71,8 @@ public:
  * @param toRemove
  * @return
  */
-    void removeCommand(Command toRemove) {
-        commandsToDo.remove(toRemove);
+    void removeCommand(Command *toRemove) {
+        commandsToDo.remove(*toRemove);
     };
 
 

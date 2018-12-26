@@ -4,9 +4,8 @@
 
 #ifndef PROJECTUPDATED_IFCOMMAND_H
 #define PROJECTUPDATED_IFCOMMAND_H
-#include "../ConditionCommand.h"
 #include "../MultiCommand.h"
-
+#include "../ConditionCommand"
 class IfCommand : ConditionCommand {
 protected:
     ConditionCommand *cond;

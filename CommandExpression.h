@@ -9,11 +9,11 @@
 #include "Expression.h"
 #include "Command.h"
 
-class commandExpression : public MathExpression {
-    Command command;
+class CommandExpression : public Expression {
+    Command *command;
 public:
     double calculate(){
-        command->execute();
+        return command->execute();
     }
 };
 
