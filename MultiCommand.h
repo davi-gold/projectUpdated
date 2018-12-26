@@ -12,28 +12,31 @@
  * MultiCommand:
  * This function receives (or adds to/removes from) a list of several Commands
  * upon 'execute' it will execute the entire list of given commands
- * @param list<Command> *toDo
+ * @param list<Command> *commandsToDo
  * @return
  */
+using namespace std;
+
 class MultiCommand : Command {
 protected:
-    std::list<Command> *commandsToDo;
+    std::list<Command> commandsToDo;
 public:
     //constructor
     MultiCommand(std::list<Command> &commandsToDo) : commandsToDo(commandsToDo) {}
 
     //constructor
     MultiCommand() {
-        this->commandsToDo = new std::list<Command>;
+         std::list<Command> commandList;
+        this->commandsToDo=commandList;
     }
 
     //getter
-    std::list<Command> *getCommandsToDo() {
+    std::list<Command> getCommandsToDo() {
         return commandsToDo;
     }
 
     //setter
-    void setCommandsToDo(std::list<Command> &commandsToDo) {
+    void setCommandsToDo(std::list<Command> commandsToDo) {
         MultiCommand::commandsToDo = commandsToDo;
     }
 
@@ -44,18 +47,16 @@ public:
  * @return
  */
     int execute() {
-        for (Command index=commandsToDo->begin();index!=commandsToDo->end();++index){
-                Command *commandBuffer= *index;
-                commandBuffer.execute();
+        for (list<Command, std::allocator<Command>>::iterator index = commandsToDo.begin(); index != commandsToDo.end(); ++index) {
+            index->execute();
         }
-            //as always we return the AMOUNT of arguements we have just executed
-            return commandsToDo->size();
+        //as always we return the AMOUNT of arguements we have just executed
+        return (int) commandsToDo.size();
     }
 
-public:
 /**
  * addCommand:
- * This function adds a new command to the 'toDo' list
+ * This function adds a new command to the commandsToDo list
  * @param doCommand;
  * @return
  */
@@ -65,7 +66,7 @@ public:
 
 /**
  * removeCommand:
- * This function removes a command from the 'toDo' list
+ * This function removes a command from the 'commandsToDo' list
  * @param toRemove
  * @return
  */

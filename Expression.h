@@ -4,7 +4,7 @@
 
 #ifndef AP1EX3_EXPRESSION_H
 #define AP1EX3_EXPRESSION_H
-class MathExpression{
+class Expression{
 public:
     virtual double calculate() = 0;
 };

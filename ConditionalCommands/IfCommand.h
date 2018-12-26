@@ -13,7 +13,7 @@ protected:
     MultiCommand *toDo;
 
 public:
-    IfCommand(MathExpression *left, MathExpression *right, MultiCommand *toDo)
+    IfCommand(Expression *left, Expression *right, MultiCommand *toDo)
             : ConditionCommand(left, right), toDo(toDo) {}
 
     int execute() override {

@@ -6,7 +6,7 @@
 #define AP1EX3_CONDITIONCOMMAND_H
 
 #include "Command.h"
-#include "MathExpression.h"
+#include "Expression.h"
 #include <string>
 /**
  * ConditionCommand::
@@ -17,13 +17,13 @@
  */
 class ConditionCommand : Command {
 protected:
-    MathExpression *left;
-    MathExpression *right;
+    Expression *left;
+    Expression *right;
     bool condition;
 public:
     ConditionCommand(bool condition) : condition(condition) {};
 
-    ConditionCommand(MathExpression *left, MathExpression *right) : left(left), right(right) {};
+    ConditionCommand(Expression *left, Expression *right) : left(left), right(right) {};
 
      int execute(){};
 
@@ -38,19 +38,19 @@ public:
     }
 
     //getter
-    MathExpression *getLeft() const {
+    Expression *getLeft() const {
         return left;
     }
 //setter
-    void setLeft(MathExpression *left) {
+    void setLeft(Expression *left) {
         ConditionCommand::left = left;
     }
 //getter
-    MathExpression *getRight() const {
+    Expression *getRight() const {
         return right;
     }
 //setter
-    void setRight(MathExpression *right) {
+    void setRight(Expression *right) {
         ConditionCommand::right = right;
     }
 };

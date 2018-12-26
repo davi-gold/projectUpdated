@@ -6,12 +6,12 @@
 #define AP1EX3_BINARYEXP_H
 
 #include "UnaryExp.h"
-class BinaryExp :MathExpression{
+class BinaryExp :Expression{
 protected:
-    MathExpression *left;
-    MathExpression *right;
+    Expression *left;
+    Expression *right;
 public:
     virtual double calculate()=0;
-    BinaryExp(MathExpression *a, MathExpression *b) : left(a), right(b){};
+    BinaryExp(Expression *a, Expression *b) : left(a), right(b){};
 };
 #endif //AP1EX3_BINARYEXP_H

@@ -6,7 +6,7 @@
 #define PROJECTUPDATED_COMMANDEXPRESSION_H
 
 
-#include "MathExpression.h"
+#include "Expression.h"
 #include "Command.h"
 
 class commandExpression : public MathExpression {
