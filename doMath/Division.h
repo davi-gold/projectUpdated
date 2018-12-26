@@ -12,7 +12,7 @@ class Division : BinaryExp {
         if (right->calculate() != 0) {
             return ((left->calculate()) + (right->calculate()));
         } else {
-            throw {std:cout << "You can't divide by zero!" << std:endln}
+            throw() {std:cout << "You can't divide by zero!" << std:endln};
         }
     }
 };
